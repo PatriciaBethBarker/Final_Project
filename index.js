@@ -16,7 +16,7 @@ server.route({
   method: "GET",
   path: "/",
   handler: function(req, reply){
-    reply.view(index, (title: "Hello Bloggers"))
+    reply.view(index, {title: "Hello Bloggers"})
   }
 });
 
