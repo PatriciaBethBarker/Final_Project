@@ -17,3 +17,15 @@ Nice-to-have requirements
     Allow users to attach tags or categories to posts, and filter the stream based on them
     Provide a search function
 
+Integrate Grunt with Hapi
+
+This application uses Grunt to perform the following automated tasks:
+
+    Uses grunt-autoprefixer to transform CSS for cross-browser compatibility.
+    Monitors and restarts the Hapi server when JS files change, using grunt-nodemon
+    Provides live reload via grunt-contrib-watch for CSS and HTML files
+
+Inputs for the public files are read from the src folder and written to the build folder. As a result, the build folder is never checked in, because its contents are generated from the Grunt process.
+
+The grunt-cli package is installed globally in order to be able to run it in a directory like this one. 
+If you have not installed it on the machine you're using, remember to run npm install grunt-cli -g to create the global command.
