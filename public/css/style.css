@@ -1,0 +1,8 @@
+// public/css/style.css
+
+transition: transfrom 1s linear;
+box-sizing: border-box;
+display: flex;
+flex: 1;
+transform-origin: 50% 50%;
+color:green;
