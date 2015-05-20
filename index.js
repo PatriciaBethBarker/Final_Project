@@ -1,7 +1,7 @@
 var hapi = require("hapi");
 
 var server = new hapi.Server();
-server.connection({ port: 8000 });
+server.connection({port: 8000});//listen using the connection function
 server.start();
 
 server.views({
@@ -11,21 +11,26 @@ server.views({
   },
 isCached: false
 })
-
+//register the routes, once matched, I want a response
 server.route({
-  method: "GET",
-  path: "/",
-  handler: function(req, reply){
-    reply.view(index, {title: "Hello Bloggers"})
+  method: "GET", //use a method - GET, POST, PUT, DELETE
+  path: "/", //route path
+  handler: function(request, reply){ //function called when it gets request from outside, 2 argu
+  //  reply.view(index, {
+  //    title: "Hello Bloggers"
+  //  });
+    console.log(request.headers);
+    console.log(request.params);
+    reply("Hello from me");
   }
 });
 
-server.route({
-  method: "GET",
-  path: "/public/{param*}",
-  handler: {
-    directory: {
-      path: "build"
-    }
-  }
-});
+//server.route({
+//  method: "GET", //
+//  path: "/public/{param*}",//matches the name in your html files
+//  handler: function(request, reply){
+//    directory: {
+//      path: "build"
+//    }
+//  }
+//});
