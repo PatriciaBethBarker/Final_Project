@@ -7,13 +7,14 @@
 
   </head>
     <body>
-        <nav>
+        <nav>  <!--{{#list nav}} -->
+          <!--<a href="{{url}}">{{title}}</a> -->
         <a href="/">Blog</a>
-        </nav>
+      </nav> <!--{{/list}} -->
           <main>
           <!-- 3 mustaches says I know this is html  -->
           {{{content}}}
-
+          <!-- "triple-stash" means don't want Handlebars to escape a value-->
 
           </main>
     </body>
