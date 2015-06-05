@@ -1,21 +1,24 @@
 <!doctype html>
 <html>
   <head>
-
+    <meta charset=utf8>
 <title>{{title}}</title>
-<meta charset=utf8>
+    <link rel="stylesheet" href="/assets/css/style.css">
 
   </head>
     <body>
         <nav>  <!--{{#list nav}} -->
           <!--<a href="{{url}}">{{title}}</a> -->
-        <a href="/">Blog</a>
-      </nav> <!--{{/list}} -->
-          <main>
+          <a href="/">Home</a>
+          <a href="/">Blog</a>
+        </nav> <!--{{/list}} -->
+
           <!-- 3 mustaches says I know this is html  -->
           {{{content}}}
           <!-- "triple-stash" means don't want Handlebars to escape a value-->
+          {{#dev}}
+          <script src="//localhost:35729/livereload.js"
+          {{/dev}}
 
-          </main>
     </body>
 </html>
