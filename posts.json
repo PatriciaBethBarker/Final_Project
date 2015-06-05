@@ -1,8 +1,8 @@
 {
-  nav: [
-    { url: "http://www.somethinghere.com", title: "Some Thing Here" },
-    { url: "http://www.somethingthere.com/block", title: "Something There Blog" },
+  "nav": [
+    { "url": "http://www.somethinghere.com", "title": "Some Thing Here" },
+    { "url": "http://www.somethingthere.com/block", "title": "Something There Blog" },
   ],
 
-  
+
 }
