@@ -10,7 +10,7 @@ module.exports = function(req, reply) {
   //new Blogs do not need to load from the db
   if (id == "new") {
     return reply.view("project", {
-      title:  "New Blog",
+      title: "New Blog",
       blog: model.JSON()
     });
   }//get model detail and then return the page
@@ -20,7 +20,7 @@ module.exports = function(req, reply) {
     if (err) {
       console.log(err);
     } else {
-      data = model.toJASON();
+      data = model.toJSON();
     }
     reply.view("blog", {
       title: data.name,

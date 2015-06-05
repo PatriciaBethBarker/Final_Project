@@ -18,7 +18,7 @@ module.exports = Backbone.Model.extend({
   load: function(done) {
     var self: this;
     var query = db.connection.prepare(LOAD);
-    var data = this.toJASON();
+    var data = this.toJSON();
     query.get({
       $id: data.id
     }, function(err, loaded) {
@@ -31,7 +31,7 @@ module.exports = Backbone.Model.extend({
     var id = this.get("id");
     var q = id == "new" ? SAVE_NEW : UPDATE;
     var query = db.connection.prepare(q);
-    var data = this.toJASON();
+    var data = this.toJSON();
     query.run({
       $name: data.name,
       $title: data.title,
