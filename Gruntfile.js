@@ -4,7 +4,7 @@ module.exports = function(grunt) {
 
   //locate all JS files inside src.js
   //  "src/js/**/*.js"
-  //will find
+  //will find:
   //  src/js/Lib/share.min.js
   //  src/js/min.js
   //will not find:
@@ -22,20 +22,33 @@ module.exports = function(grunt) {
   //good to call up assets
 
   //ie, less css files, autoprefixer, in sequence
-  grunt.registerTask("hi", ["hello"]);
-
+  grunt.registerTask("hi",
+  ["hello"]);
+    //Autoprefixer parses CSS
+    //adds vendor-prefixed CSS properties
+    //using the Can I Use database
   grunt.loadNpmTasks("grunt-autoprefixer");
+  grunt.loadNpmTasks("grunt-contrib-watch");
 
-  grunt.registerTask("default", ["autoprefixer"]);
+  grunt.registerTask("default",
+  ["autoprefixer"]);
 
   grunt.initConfig({
+    watch: {
+      prefix: {
+        files: "src/css/**/*.css",
+        tasks: ["autoprefixer"]
+      }
+    }, //end of object
     autoprefixer: {
       dev: {
+        expand: true,
+        flatten: true,
         src: "public/css/**/*.css",  //use globbing pattern
-        dest: "build/css"
+        dest: "build/css/"
       }
     }
 
   });
 
-};
+};  //1:04:00
