@@ -7,22 +7,28 @@ server.connection({port: 8000});//listen using the connection function
 server.start();
 
 server.views({
-  path: ".", //"templates"
+//register the templates
   engines: {
     html: require("handlebars")
   },
+  path: "templates", //"templates"
+  layoutPath: "layouts",
+  layout: "default",
+  //add partials path here
+    partialsPath: "templates/partials",
 isCached: false
-})
+});
 //register the routes, once matched, I want a response
+
 
 //var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
 server.route({
   method: "GET", //use a method - GET, POST, PUT, DELETE
-  path: "/", //route path, i.e., {name?} name must be there or undefined
+  path: "/public/{param*}", //route path, i.e., {name?} name must be there or undefined
   //path: "/{name?}",
-  handler: function(request, reply){ //function called when it gets request from outside, 2 argu
-    reply.view(index, {  //load index off the hardrive and use it
+  handler: function(req, reply){ //function called when it gets request from outside, 2 argu
+    reply.view("index", {  //load index off the hardrive and use it
       title: "Hello Bloggers" //
     });
   //console.log(request.headers);
@@ -36,13 +42,16 @@ server.route({
   }
 });//end route to index
 
+var jsonObj = require("./posts.json"),
+jsonObj = jsonObj.posts;
+
  server.route({
    method: "GET", //
     path: "/public/{param*}",//matches the name in your html files
     //path: "/{name}/{id}",
-    handler: function(request, reply){
+    handler: function(req, reply){
       directory: {
-        path: "build"
+        path: "public"
         //reply(request.params.name + "|" + request.params.id);
     }
    }
