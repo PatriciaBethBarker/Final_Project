@@ -24,12 +24,14 @@ module.exports = function(grunt) {
   //ie, less css files, autoprefixer, in sequence
   grunt.registerTask("hi", ["hello"]);
 
-  grunt.loadNpmTask("grunt-autoprefixer");
+  grunt.loadNpmTasks("grunt-autoprefixer");
+
+  grunt.registerTask("default", ["autoprefixer"]);
 
   grunt.initConfig({
     autoprefixer: {
       dev: {
-        src: "public/css/**/*.css",
+        src: "public/css/**/*.css",  //use globbing pattern
         dest: "build/css"
       }
     }
