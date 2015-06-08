@@ -9,6 +9,7 @@
   "author": "Patricia Barker",
   "license": "ISC",
   "dependencies": {
+    "autoprefixer": "^5.2.0",
     "grunt": "^0.4.5",
     "grunt-concurrent": "^1.0.0",
     "grunt-nodemon": "^0.4.0",
