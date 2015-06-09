@@ -8,13 +8,13 @@ var SAVE_NEW = "INSERT INTO blogs (name, title, author) VALUES ($name, $title, $
 var UPDATE = "UPDATE blogs SET name = $name, title = $title, author = $author WHERE rowid = $id;";
 var LAST = "SELECT last_insert_rowid() AS rowid FROM blogs;";
 
-module.exports = Backbone.Model.extend({
+module.exports = Backbone.Model.extend({//Backbone models are "observable:"
   defaults: {
     name: "Untitled Blog",
     title: "",
     author: "",
     id: "new"
-  },
+  },//they fire events when their properties are changed
   load: function(done) {
     var self: this;
     var query = db.connection.prepare(LOAD);
