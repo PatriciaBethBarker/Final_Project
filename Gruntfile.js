@@ -29,26 +29,33 @@ module.exports = function(grunt) {
     //using the Can I Use database
   grunt.loadNpmTasks("grunt-autoprefixer");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-concurrent");
+  grunt.loadNpmTasks("grunt-nodemon");
 
   grunt.registerTask("default",
   ["autoprefixer"]);
 
   grunt.initConfig({
+    nodemon: {
+      dev: {
+        script: "index.js" //tell what scripts to run
+      }//target
+    },//object key
     watch: {
       prefix: {
-        files: "src/css/**/*.css",
+        files: "src/css/**/*.css",  //use globbing pattern
         tasks: ["autoprefixer"]
       }
-    }, //end of object
+    }, //end of object, comma btwn array and object properties
     autoprefixer: {
       dev: {
         expand: true,
         flatten: true,
-        src: "public/css/**/*.css",  //use globbing pattern
+        src: "public/css/**/*.css",
         dest: "build/css/"
       }
     }
 
   });
 
-};  //1:04:00
+};  //
