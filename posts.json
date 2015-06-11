@@ -1,8 +1,21 @@
 {
-  "nav": [
-    { "url": "http://www.somethinghere.com", "title": "Some Thing Here" },
-    { "url": "http://www.somethingthere.com/block", "title": "Something There Blog" },
-  ],
-
+  "postList":
+  [
+    {
+      "title": "Some Thing Here",
+      "content": "Yep, we are doing something!",
+      "author": "Patricia"
+    },
+    {
+      "title": "Something There Blog",
+      "content": "Maybe, we are doing a little something!",
+      "author": "Patricia"
+    },
+    {
+      "title": "More of Something There Blog",
+      "content": "Wow, we are doing more of something!",
+      "author": "Patricia"
+    }
+  ]
 
 }
