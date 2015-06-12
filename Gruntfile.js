@@ -32,10 +32,17 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks("grunt-concurrent");
   grunt.loadNpmTasks("grunt-nodemon");
 
-  grunt.registerTask("default",
-  ["autoprefixer"]);
+  grunt.registerTask("default", ["autoprefixer", "concurrent"]);
 
   grunt.initConfig({
+    concurrent: {
+      dev: {
+        tasks: ["watch", "nodemon"],
+        options: {
+          logConcurrentOutput: true
+        }
+      }
+    },
     nodemon: {
       dev: {
         script: "index.js" //tell what scripts to run

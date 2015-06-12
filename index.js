@@ -49,7 +49,7 @@ jsonObj = jsonObj.posts;
    method: "GET", //
     path: "/public/{param*}",//matches the name in your html files
     //path: "/{name}/{id}",
-    handler: function(req, reply){
+    handler: {
       directory: {
         path: "build"
         //reply(request.params.name + "|" + request.params.id);
