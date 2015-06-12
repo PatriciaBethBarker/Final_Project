@@ -1,10 +1,13 @@
 //index.js
 
 var hapi = require("hapi");
+var db = require("./db");
 
 var server = new hapi.Server();
 server.connection({port: 8000});//listen using the connection function
-server.start();
+db.init(function() {//this is the ready function
+  server.start();
+});
 
 server.views({
 //register the templates

@@ -29,7 +29,7 @@ var facade = {
     });
   },
   getALLPosts: function(c) {
-    db.all("SELECT FirstName, LastName, Email, rowid FROM xx;", c);
+    db.all("SELECT * FROM posts;", c);
   }
 };
 

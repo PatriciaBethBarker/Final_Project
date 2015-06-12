@@ -2,20 +2,28 @@
   "postList":
   [
     {
-      "title": "Some Thing Here",
+      "title": "Some Thing Flowery Here",
       "content": "Yep, we are doing something!",
-      "author": "Patricia"
+      "author": "Patricia",
+      "category": "Green",
+      "tags": "Flower Garden",
+      "meta": ""
     },
     {
-      "title": "Something There Blog",
+      "title": "Something Veggie Blog",
       "content": "Maybe, we are doing a little something!",
-      "author": "Patricia"
+      "author": "Patricia",
+      "category": "Yellow",
+      "tags": "Veggie Garden",
+      "meta": ""
     },
     {
-      "title": "More of Something There Blog",
+      "title": "More of Something Spicy Blog",
       "content": "Wow, we are doing more of something!",
-      "author": "Patricia"
+      "author": "Patricia",
+      "category": "Spicy",
+      "tags": "Herb Garden",
+      "meta": ""
     }
   ]
-
 }
