@@ -14,7 +14,7 @@ module.exports = function (req, reply) {
         //if, else statement
         if (expected && req.payload.password == expected.password) {
 
-          var response = replay("Succssful login!";
+          var response = reply("Succssful login!";
           var id = req.payload.name + Date.now();
           pb2.update(id);
           id = pb2.digest("hex");
