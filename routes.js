@@ -9,32 +9,28 @@ module.exports = [{
   method: "GET",
   handler: require("./handlers/home") {
 }, {
-  path: "/posts/{id}",//new post
+  path: "/posts/new",//new post
   method: "GET",
   handler: require("./handlers/addPost") {
 }, {
-  path: "posts/{id}",//edit post
+  path: "posts/{slug}/edit",//edit post
   method: "GET",
   handlers: require("./handlers/editPost") {
 }, {
-  path: "posts/{id}",
-  method: "GET",
-  handlers: require("./handlers/getPost") {
-}, {
-  path: "posts/{id}",//save post
-  method: "GET",
+  path: "posts/{slug}",//save post
+  method: "POST",//post saved
   handlers: require("./handlers/savePost") {
 }, {//create single page view
-  path: "posts/{id}",
+  path: "posts/{slug}",//return name of post
   method: "GET",
   handlers: require("./handlers/viewPost") {
 }, {
-  path: "/{id}",//login
+  path: "/login",//login
   method: "GET",
   handlers: require("./handlers/getLogin") {
 }, {
-  path: "posts/{id}",
-  method: "GET",
+  path: "/login",
+  method: "POST",
   handlers: require("./handlers/postLogin") {
 }, {
   path: "/assets/{param*}",
