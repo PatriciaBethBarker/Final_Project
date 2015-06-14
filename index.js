@@ -3,10 +3,26 @@
 var hapi = require("hapi");
 var db = require("./db");
 
-var server = new hapi.Server();
+var server = new hapi.Server( {
+  //add connection settings, remove trailing slash in url
+  connections: {
+    router: {
+      isCaseSensitive: true,
+      stripTrailingSlash: false
+    }
+  }
+});
+
 server.connection({port: 8000});//listen using the connection function
-db.init(function() {//this is the ready function
-  server.start();
+db.init(function(err) {//this is the ready function
+  //if error statement
+  if (err) {
+    return console.error("db err", err);
+  }
+  console.log("Database ready, start server.");
+  server.start(function() {
+    console.log("Server Ready");
+  });
 });
 
 server.views({
@@ -22,7 +38,6 @@ server.views({
 isCached: false
 });
 //register the routes, once matched, I want a response
-
 
 //var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
@@ -59,3 +74,5 @@ jsonObj = jsonObj.posts;
     }
    }
  });//end route to build
+//require the routes
+server.route(require("./routes"));
