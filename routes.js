@@ -9,11 +9,11 @@ module.exports = [{
   method: "GET",
   handler: require("./handlers/home") {
 }, {
-  path: "/posts/{id}",
+  path: "/posts/{id}",//new post
   method: "GET",
   handler: require("./handlers/addPost") {
 }, {
-  path: "posts/{id}",
+  path: "posts/{id}",//edit post
   method: "GET",
   handlers: require("./handlers/editPost") {
 }, {
@@ -21,19 +21,15 @@ module.exports = [{
   method: "GET",
   handlers: require("./handlers/getPost") {
 }, {
-  path: "posts/{id}",
+  path: "posts/{id}",//save post
   method: "GET",
   handlers: require("./handlers/savePost") {
-}, {
-  path: "posts/{id}",
-  method: "GET",
-  handlers: reqiure("./handlers/setPost") {
-}, {
+}, {//create single page view
   path: "posts/{id}",
   method: "GET",
   handlers: require("./handlers/viewPost") {
 }, {
-  path: "posts/{id}",
+  path: "/{id}",//login
   method: "GET",
   handlers: require("./handlers/getLogin") {
 }, {
