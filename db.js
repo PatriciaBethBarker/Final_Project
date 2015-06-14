@@ -2,35 +2,52 @@
 var async = require("async");
 var sqlite = require("sqlite3");
 var db; //this db will be used across module
+//create users
+var users = {//no uppercase, create users
+  patricia: "wxyz",
+  visitor: "visitor"
+};
 
-var facade = {
+var database = {
   connection: null,
-  init: function(ready) {
-    db = new sqlite.Database("posts.db", function(err) {
+  init: function(ready) {//add connection to db
+    var db = database.connection = new sqlite.Database("posts.db", function(err) {
       if (err) {
         console.error("Could not open Posts database");
         process.exit(1);
       }
 
       //store the connecction for outside modules to use directly
-      facade.connection = db;
+      database.connection = db;
 
-      //create tables and execute ready callbackwhen done
+      //create tables and execute ready callback when done
       async.parallel([
+        function(c) {// add slug, updated_at and created_at
+          db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, tag, created_at, updated_at, meta);", c);
+        },// add slug
         function(c) {
-          db.run("CREATE TABLE IF NOT EXISTS posts (title, content, author, category, tag, meta);", c);
+          db.run("CREATE TABLE IF NOT EXISTS users (username, session, password);", c);//AVOID CAPS, cc ok
         },
         function(c) {
-          db.run("CREATE TABLE IF NOT EXISTS users (FirstName, LastName, Email, Password);", c);
-        }
-      ], function(err) {
+          db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
+            $username: "Patricia",
+            $password: "4256pbb"
+          }, c);
+        },//create visitor default login
+        db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
+          $username: "visitor",
+          $password: "welcome"
+        }, c)
+      ], function(err) {//call the Database, bind
+          db.all("SELECT * FROM users", console.log.bind(console));
+            console.log(err);
         if (ready) ready(err);
       });
     });
   },
-  getALLPosts: function(c) {
-    db.all("SELECT * FROM posts;", c);
+  getALLPosts: function(c) {//create order of posts here =>look up created_at
+    db.all("SELECT *, rowid FROM posts ORDER BY created_at DESC;", c);
   }
 };
-
-module.exports = facade;
+//call database
+module.exports = database;
