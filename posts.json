@@ -7,7 +7,9 @@
       "author": "Patricia",
       "category": "Green",
       "tags": "Flower Garden",
-      "meta": ""
+      "meta": "",
+      "created_at": "",
+      "updated_at": ""
     },
     {
       "title": "Something Veggie Blog",
@@ -15,7 +17,9 @@
       "author": "Patricia",
       "category": "Yellow",
       "tags": "Veggie Garden",
-      "meta": ""
+      "meta": "",
+      "created_at": "",
+      "updated_at": ""
     },
     {
       "title": "More of Something Spicy Blog",
@@ -23,7 +27,9 @@
       "author": "Patricia",
       "category": "Spicy",
       "tags": "Herb Garden",
-      "meta": ""
+      "meta": "",
+      "created_at": "",
+      "updated_at": ""
     }
   ]
 }
