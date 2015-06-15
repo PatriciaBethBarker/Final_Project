@@ -15,7 +15,8 @@ var server = new hapi.Server( {
 });
 
 // Register the plugin
-server.register(require('hapi-auth-cookie'), function (err) {
+server.register(require('hapi-auth-cookie'),
+  function (err) {
     if (err) {
         throw err;
     }
@@ -31,6 +32,8 @@ server.register(require('hapi-auth-cookie'), function (err) {
 
     // Print some info about the incoming request for debugging purposes
     server.ext('onRequest', function (request, next) {
+      // Change all requests to '/test'
+        //request.setUrl('/test');
         console.log(request.path, request.query);
         return reply.continue();
     });
