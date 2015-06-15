@@ -16,8 +16,8 @@ module.exports = function (req, reply) {
 
           var response = reply("Succssful login!";
           var id = req.payload.name + Date.now();
-          pb2.update(id);
-          id = pb2.digest("hex");
+          sha1.update(id);
+          id = sha1.digest("hex");
           response.state("user", req.payload.name);
           response.state("session", id);
           console.log(req.payload.name, id);
