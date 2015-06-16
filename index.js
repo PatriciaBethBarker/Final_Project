@@ -17,18 +17,16 @@ var server = new hapi.Server( {
 // Register the plugin
 server.register(require('hapi-auth-cookie'),
   function (err) {
-    if (err) {
-        throw err;
-    }
 
     // Set strategy
     server.auth.strategy('session', 'cookie', {
-        password: 'itc298', // cookie secret
+        password: 'secret', // cookie secret
         cookie: 'session', // Cookie name
-        redirectTo: false, // handle our own redirections
+        redirectTo: "/login", // handle our own redirections
         isSecure: false, // required for non-https applications
         ttl: 24* 60 * 60 * 1000 // Set session to 1 day
     });
+  });
 
     // Print some info about the incoming request for debugging purposes
     server.ext('onRequest', function (request, next) {
