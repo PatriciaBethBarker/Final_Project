@@ -41,7 +41,7 @@ server.register(require('hapi-auth-cookie'),
     server.route(Routes.endpoints);
 
     // Start the server
-server.connection({port: 8000});//listen using the connection function
+server.connection({ port: 8000 });//listen using the connection function
 db.init(function(err) {//this is the ready function
   //if error statement
   if (err) {
