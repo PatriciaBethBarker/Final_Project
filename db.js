@@ -28,7 +28,7 @@ var database = {
 
       //create tables and execute ready callback when done
       async.series([
-        function(c) {// add slug, updated_at and created_at
+        function(c) {// add slug, created_at
           db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, created_at, formatted);", c);
         },// add slug
         function(c) {
