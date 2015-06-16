@@ -5,7 +5,7 @@ var db = require("../db");
 var moment = require('moment');
 
 var LOAD = "SELECT name, title, author FROM posts WHERE slug = $slug;";
-var SAVE_NEW = "INSERT INTO posts (name, title, author, content, category, created_at,  formatted) VALUES ($name, $title, $author, $content, $category, $datetime('now'),  $formatted);";
+var SAVE_NEW = "INSERT INTO posts (name, title, author, content, category, created_at, formatted) VALUES ($name, $title, $author, $content, $category, $datetime('now'),  $formatted);";
 var UPDATE = "UPDATE posts SET name = $name, title = $title, author = $author WHERE slug = $slug;";
 var LAST = "SELECT last_insert_rowid() AS rowid FROM posts;";
 
@@ -15,7 +15,6 @@ module.exports = Backbone.Model.extend({//Backbone models are "observable:"
     title: "",
     author: "",
     content: "",
-    category: "",
     created_at: "",
     id: "new"
   },//they fire events when their properties are changed
