@@ -20,7 +20,7 @@ module.exports = Backbone.Model.extend({
     id: "new" 
   },//they fire events when their properties are changed
   load: function(done) {
-    var self: this;
+    var self = this;
     var query = db.connection.prepare(LOAD);
     var data = this.toJSON();
     query.get({
