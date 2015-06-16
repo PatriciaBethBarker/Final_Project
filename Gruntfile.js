@@ -22,8 +22,8 @@ module.exports = function(grunt) {
   //good to call up assets
 
   //ie, less css files, autoprefixer, in sequence
-  grunt.registerTask("hi",
-  ["hello"]);
+  grunt.registerTask("default",
+  ["autoprefixer", "concurrent"]);
     //Autoprefixer parses CSS
     //adds vendor-prefixed CSS properties
     //using the Can I Use database
