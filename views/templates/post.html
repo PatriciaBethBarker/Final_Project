@@ -1,0 +1,22 @@
+<h1>Add/Edit Posts</h1>
+
+  <form action="/posts/{{post.id}}" method="POST" class="edit">
+    <input type="hidden" name="id" value="{{post.id}}">
+
+        <div class="formAdd">
+          <label>Post title:  </label>
+          <input name="title" value="{{post.title}}">
+        </div>
+
+        <div class="formAdd">
+          <label>Category:  </label>
+          <input name="category" value="{{post.category}}">
+        </div>
+
+        <div class="formAdd">
+          <label>Content:  </label>
+          <input name="content" value="{{post.content}}">
+        </div>
+
+   <input type="submit">
+  </form>
