@@ -4,8 +4,16 @@ var sqlite = require("sqlite3");
 var db; //this db will be used across module
 //create users
 var users = {//no uppercase, create users
-  patricia: "wxyz",
-  visitor: "visitor"
+  patricia: {
+    id: "patricia",
+    password: "wxyz",
+    name: "Patricia Barker"
+  },
+  visitor: {
+    id: "visitor",
+    password: "password",
+    name: "Guest"
+  }
 };
 
 var database = {
