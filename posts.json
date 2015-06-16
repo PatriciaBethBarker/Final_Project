@@ -6,30 +6,21 @@
       "content": "Yep, we are doing something!",
       "author": "Patricia",
       "category": "Green",
-      "tags": "Flower Garden",
-      "meta": "",
-      "created_at": "",
-      "updated_at": ""
+      "created_at": ""
     },
     {
       "title": "Something Veggie Blog",
       "content": "Maybe, we are doing a little something!",
       "author": "Patricia",
       "category": "Yellow",
-      "tags": "Veggie Garden",
-      "meta": "",
-      "created_at": "",
-      "updated_at": ""
+      "created_at": ""
     },
     {
       "title": "More of Something Spicy Blog",
       "content": "Wow, we are doing more of something!",
       "author": "Patricia",
       "category": "Spicy",
-      "tags": "Herb Garden",
-      "meta": "",
-      "created_at": "",
-      "updated_at": ""
+      "created_at": ""
     }
   ]
 }

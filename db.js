@@ -10,7 +10,7 @@ var users = {//no uppercase, create users
   },
   visitor: {
     id: "visitor",
-    password: "password"
+    password: "welcome"
   }
 };
 
@@ -29,7 +29,7 @@ var database = {
       //create tables and execute ready callback when done
       async.series([
         function(c) {// add slug, updated_at and created_at
-          db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, created_at, updated_at, formatted);", c);
+          db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, created_at, formatted);", c);
         },// add slug
         function(c) {
           db.run("CREATE TABLE IF NOT EXISTS users (username, session, password);", c);//AVOID CAPS, cc ok
@@ -42,7 +42,7 @@ var database = {
         },//create visitor default login
           db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
             $username: "visitor",
-            $password: "password"
+            $password: "welcome"
           }, c)
       ], function(err) {//call the Database, bind
           db.all("SELECT * FROM users", console.log.bind(console));
