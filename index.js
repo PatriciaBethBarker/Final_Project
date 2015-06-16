@@ -3,6 +3,7 @@
 var hapi = require("hapi");
 var db = require("./db");
 var Routes = require("./routes");
+var async = require("async");
 
 var server = new hapi.Server( {
   //add connection settings, remove trailing slash in url
