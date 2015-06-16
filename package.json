@@ -20,5 +20,16 @@
     "hapi-auth-cookie": "^3.0.1",
     "moment": "^2.10.3",
     "sqlite3": "^3.0.8"
-  }
+  },
+    "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PatriciaBethBarker/Final_Project"
+  },
+  "start": "node index",
+  "bugs": {
+    "url": "https://github.com/PatriciaBethBarker/Final_Project/issues"
+  },
+  "homepage": "github.com/PatriciaBethBarker/Final_Project/#README.md",
+  "description": ""
+}
 }
