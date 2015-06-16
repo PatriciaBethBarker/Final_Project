@@ -49,12 +49,16 @@ module.exports = function(grunt) {
       }//target
     },//object key
     watch: {
-      prefix: {
         options: {
           livereload: true
         },
+      prefix: {
         files: "src/css/**/*.css",  //use globbing pattern
         tasks: ["autoprefixer"]
+      },
+      template: {
+        files: "**/*.html",//2 targets within watch
+        tasks: ["hello"]
       }
     }, //end of object, comma btwn array and object properties
     autoprefixer: {

@@ -5,12 +5,12 @@ var Crypto = require("crypto");
 module.exports = function (req, reply) {
   var hash = Crypto.createHash("sha1");//create hash varible
 
-  //get password/username from payload
-  db.get("SELECT * FROM users WHERE username = $username", {
+  //get password/username from payload, add connection
+  db.connection.get("SELECT * FROM users WHERE username = $username", {
     $username: req.payload.name
   },
     function(err, expected) {//match the password from db
-      console.log(req.payload.password == expected.password) {
+      console.log(req.payload, expected, err) {
         //if, else statement
         if (expected && req.payload.password == expected.password) {
 
