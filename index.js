@@ -3,7 +3,7 @@
 var hapi = require("hapi");
 var db = require("./db");
 var Routes = require("./routes");
-var async = require("async");
+//var async = require("async");
 
 var server = new hapi.Server( {
   //add connection settings, remove trailing slash in url
@@ -16,18 +16,18 @@ var server = new hapi.Server( {
 });
 
 // Register the plugin
-server.register(require('hapi-auth-cookie'),
-  function (err) {
+//server.register(require('hapi-auth-cookie'),
+//  function (err) {
 
     // Set strategy
-    server.auth.strategy('session', 'cookie', {
-        password: 'secret', // cookie secret
-        cookie: 'session', // Cookie name
-        redirectTo: "/login", // handle our own redirections
-        isSecure: false, // required for non-https applications
-        ttl: 24* 60 * 60 * 1000 // Set session to 1 day
-    });
-  });
+  //  server.auth.strategy('session', 'cookie', {
+  //      password: 'secret', // cookie secret
+  //      cookie: 'session', // Cookie name
+  //      redirectTo: "/login", // handle our own redirections
+  //      isSecure: false, // required for non-https applications
+  //      ttl: 24* 60 * 60 * 1000 // Set session to 1 day
+  //  });
+//  });
 
     // Print some info about the incoming request for debugging purposes
     server.ext('onRequest', function (request, next) {

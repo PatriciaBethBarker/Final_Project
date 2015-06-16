@@ -6,13 +6,11 @@ var db; //this db will be used across module
 var users = {//no uppercase, create users
   patricia: {
     id: "patricia",
-    password: "wxyz",
-    name: "Patricia Barker"
+    password: "123abc"
   },
   visitor: {
     id: "visitor",
-    password: "password",
-    name: "Guest"
+    password: "password"
   }
 };
 
@@ -29,9 +27,9 @@ var database = {
       database.connection = db;
 
       //create tables and execute ready callback when done
-      async.parallel([
+      async.series([
         function(c) {// add slug, updated_at and created_at
-          db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, tag, created_at, updated_at, meta);", c);
+          db.run("CREATE TABLE IF NOT EXISTS posts (title, slug, content, author, category, created_at, updated_at, formatted);", c);
         },// add slug
         function(c) {
           db.run("CREATE TABLE IF NOT EXISTS users (username, session, password);", c);//AVOID CAPS, cc ok
@@ -39,13 +37,14 @@ var database = {
         function(c) {
           db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
             $username: "Patricia",
-            $password: "4256pbb"
+            $password: "123abc"
           }, c);
         },//create visitor default login
-        db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
-          $username: "visitor",
-          $password: "welcome"
-        }, c)
+          db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
+            $username: "visitor",
+            $password: "password"
+          }, c)
+      }
       ], function(err) {//call the Database, bind
           db.all("SELECT * FROM users", console.log.bind(console));
             console.log(err);
@@ -54,7 +53,7 @@ var database = {
     });
   },
   getALLPosts: function(c) {//create order of posts here =>look up created_at
-    db.all("SELECT *, rowid FROM posts ORDER BY created_at DESC;", c);
+    database.connection.all("SELECT *, rowid FROM posts ORDER BY created_at DESC;", c);
   }
 };
 //call database

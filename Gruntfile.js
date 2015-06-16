@@ -50,6 +50,9 @@ module.exports = function(grunt) {
     },//object key
     watch: {
       prefix: {
+        options: {
+          livereload: true
+        },
         files: "src/css/**/*.css",  //use globbing pattern
         tasks: ["autoprefixer"]
       }
