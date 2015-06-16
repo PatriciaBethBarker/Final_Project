@@ -5,7 +5,7 @@ var db = require("../db");
 var moment = require('moment');
 
 var LOAD = "SELECT name, title, author FROM posts WHERE slug = $slug;";
-var SAVE_NEW = "INSERT INTO posts (name, title, author, content, category, tags, meta, created_at, updated_at) VALUES ($name, $title, $author, $content, $category, $tags, $meta, $datetime('now'), $updated_at, formatted);";
+var SAVE_NEW = "INSERT INTO posts (name, title, author, content, category, created_at,  formatted) VALUES ($name, $title, $author, $content, $category, $datetime('now'),  $formatted);";
 var UPDATE = "UPDATE posts SET name = $name, title = $title, author = $author WHERE slug = $slug;";
 var LAST = "SELECT last_insert_rowid() AS rowid FROM posts;";
 
@@ -16,10 +16,7 @@ module.exports = Backbone.Model.extend({//Backbone models are "observable:"
     author: "",
     content: "",
     category: "",
-    tags: "",
-    meta: "",
     created_at: "",
-    updated_at: "",
     id: "new"
   },//they fire events when their properties are changed
   load: function(done) {
@@ -40,17 +37,13 @@ module.exports = Backbone.Model.extend({//Backbone models are "observable:"
     var query = db.connection.prepare(q);
     var data = this.toJSON();
     var slug = this.get("title").toLowerCase();
+
     query.run({
-      $name: data.name,
       $title: data.title,
-      $author: data.author,
       $content: data.content,
-      $category: data.category,
-      $tags:  data.tags,
-      $meta:  data.meta,
-      $created_at: data.created_at,
-      $updated_at: data.updated_at,
-      $id: id == "new" ? undefined : data.id
+      $id: id == "new" ? undefined : data.id,//format date
+      $formatted: moment().format("MMMM Do YYYY, h:mm:ss a"),
+      $slug: slug
     }, done);
   }
 });

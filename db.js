@@ -44,7 +44,6 @@ var database = {
             $username: "visitor",
             $password: "password"
           }, c)
-      }
       ], function(err) {//call the Database, bind
           db.all("SELECT * FROM users", console.log.bind(console));
             console.log(err);
