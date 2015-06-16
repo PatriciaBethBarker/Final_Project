@@ -14,20 +14,55 @@ var server = new hapi.Server( {
 });
 
 
-
 // Register the plugin
 -server.register(require('hapi-auth-cookie'),
 -  function (err) {
 -
 -    // Set strategy
--    server.auth.strategy('session', 'cookie', {
--        password: 'secret', // cookie secret
--        cookie: 'session', // Cookie name
+-    server.auth.strategy("session", "cookie", {
+-        password: "secret", // cookie secret
+-        cookie: "session", // Cookie name
 -        redirectTo: "/login", // handle our own redirections
 -        isSecure: false, // required for non-https applications
 -        ttl: 24* 60 * 60 * 1000 // Set session to 1 day
 -   });
 -  });
+
+// server.route([
+//     {
+//         method: 'GET',
+//         path: '/',
+//         config: {
+//             handler: home,
+//             auth: 'session'
+//         }
+//     },
+//     {
+//         method: ['GET', 'POST'],
+//         path: '/login',
+//         config: {
+//             handler: getLogin,
+//             auth: {
+//                 mode: 'try',
+//                 strategy: 'session'
+//             },
+//             plugins: {
+//                 'hapi-auth-cookie': {
+//                     redirectTo: false
+//                 }
+//             }
+//         }
+//     },
+//     {
+//         method: 'GET',
+//         path: '/logout',
+//         config: {
+//             handler: logout,
+//             auth: 'session'
+//         }
+//     }
+// ]);
+
 -
 -    // Print some info about the incoming request for debugging purposes
 -    server.ext('onRequest', function (request, next) {
