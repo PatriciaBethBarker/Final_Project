@@ -15,6 +15,7 @@ module.exports = Backbone.Model.extend({//Backbone models are "observable:"
     title: "",
     author: "",
     content: "",
+    category: "",
     created_at: "",
     id: "new"
   },//they fire events when their properties are changed
