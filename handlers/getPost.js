@@ -1,17 +1,17 @@
 //getPost.js
 
-var Blog = require("../models/blog");
+var Blog = require("../models/post");//get the post
 
 module.exports = function(req, reply) {
   var id = req.params.id;
-  var model = new Blog({
+  var model = new Post({//yikes!
     id: id
   });
   //new Blogs do not need to load from the db
   if (id == "new") {
     return reply.view("project", {
-      title: "New Blog",
-      blog: model.JSON()
+      title: "New Post",
+      post: model.JSON()
     });
   }//get model detail and then return the page
   model.set("id", id);
@@ -22,9 +22,9 @@ module.exports = function(req, reply) {
     } else {
       data = model.toJSON();
     }
-    reply.view("blog", {
+    reply.view("post", {
       title: data.name,
-      blog: data
+      post: data
     });
   });
 };
