@@ -1,5 +1,4 @@
 //getPost.js
-
 var Post = require("../models/post");//get the post
 
 module.exports = function(req, reply) {
