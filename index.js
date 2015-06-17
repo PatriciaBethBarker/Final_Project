@@ -13,6 +13,19 @@ var server = new hapi.Server( {
   }
 });
 
+// Start the server
+server.connection({ port: 8000 });//listen using the connection function
+var db = require("./db");
+  db.init(function(err) { //this is the ready function
+  //if error statement
+    if (err) {
+      return console.error("db err", err);
+    }
+    console.log("Database ready, start server.");
+    server.start(function() {
+    console.log("Server Ready");
+    });
+});
 
 // Register the plugin
 server.register(require('hapi-auth-cookie'),
@@ -74,21 +87,6 @@ server.ext('onRequest', function (request, next) {
 
 server.route(Routes.endpoints);
 
-
-
-    // Start the server
-server.connection({ port: 8000 });//listen using the connection function
-var db = require("./db");
-db.init(function(err) { //this is the ready function
-  //if error statement
-  if (err) {
-    return console.error("db err", err);
-  }
-  console.log("Database ready, start server.");
-  server.start(function() {
-    console.log("Server Ready");
-  });
-});
 
 server.views({
 //register the templates
