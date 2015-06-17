@@ -85,7 +85,7 @@ server.ext('onRequest', function (request, next) {
   return reply.continue();
 });
 
-server.route(Routes.endpoints);
+//server.route(Routes.endpoints);
 
 
 server.views({
