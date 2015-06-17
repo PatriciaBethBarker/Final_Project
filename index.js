@@ -1,7 +1,7 @@
 //index.js
 
 var hapi = require("hapi");
-//var Routes = require("./routes");
+var Routes = require("./routes");
 //move the db require below server connection
 var server = new hapi.Server( {
   //add connection settings, remove trailing slash in url
@@ -12,6 +12,9 @@ var server = new hapi.Server( {
     }
   }
 });
+
+
+//server.route(Routes.endpoints);
 
 // Start the server
 server.connection({ port: 8000 });//listen using the connection function
@@ -85,7 +88,6 @@ server.ext('onRequest', function (request, next) {
   return reply.continue();
 });
 
-//server.route(Routes.endpoints);
 
 
 server.views({
@@ -104,7 +106,7 @@ isCached: false
 
 //var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
-server.route(require("./routes"));
+//server.route(require("./routes"));
 
 server.route({
   method: "GET", //use a method - GET, POST, PUT, DELETE
