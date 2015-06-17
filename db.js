@@ -40,10 +40,12 @@ var database = {
             $password: "123abc"
           }, c);
         },//create visitor default login
+        function(c) {
           db.run("INSERT INTO users (username, password) VALUES ($username, $password);", {
             $username: "visitor",
             $password: "welcome"
           }, c)
+        }
       ], function(err) {//call the Database, bind
           db.all("SELECT * FROM users", console.log.bind(console));
             console.log(err);
@@ -51,7 +53,7 @@ var database = {
       });
     });
   },
-  getALLPosts: function(c) {//create order of posts here =>look up created_at
+  getAllPosts: function(c) {//create order of posts here =>look up created_at
     database.connection.all("SELECT *, rowid FROM posts ORDER BY created_at DESC;", c);
   }
 };

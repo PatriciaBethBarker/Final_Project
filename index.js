@@ -1,7 +1,6 @@
 //index.js
 
 var hapi = require("hapi");
-var Routes = require("./routes");
 //move the db require below server connection
 var server = new hapi.Server( {
   //add connection settings, remove trailing slash in url
@@ -13,8 +12,6 @@ var server = new hapi.Server( {
   }
 });
 
-
-//server.route(Routes.endpoints);
 
 // Start the server
 server.connection({ port: 8000 });//listen using the connection function
@@ -29,66 +26,6 @@ var db = require("./db");
     console.log("Server Ready");
     });
 });
-
-// Register the plugin
-server.register(require('hapi-auth-cookie'),
-  function (err) {
-
-    // Set strategy
-server.auth.strategy("session", "cookie", {
-  password: "secret", // cookie secret
-  cookie: "session", // Cookie name
-  redirectTo: "/login", // handle our own redirections
-  isSecure: false, // required for non-https applications
-  ttl: 24* 60 * 60 * 1000 // Set session to 1 day
-  });
-});
-
-// server.route([
-//     {
-//         method: 'GET',
-//         path: '/',
-//         config: {
-//             handler: home,
-//             auth: 'session'
-//         }
-//     },
-//     {
-//         method: ['GET', 'POST'],
-//         path: '/login',
-//         config: {
-//             handler: getLogin,
-//             auth: {
-//                 mode: 'try',
-//                 strategy: 'session'
-//             },
-//             plugins: {
-//                 'hapi-auth-cookie': {
-//                     redirectTo: false
-//                 }
-//             }
-//         }
-//     },
-//     {
-//         method: 'GET',
-//         path: '/logout',
-//         config: {
-//             handler: logout,
-//             auth: 'session'
-//         }
-//     }
-// ]);
-
-
-    // Print some info about the incoming request for debugging purposes
-server.ext('onRequest', function (request, next) {
-    // Change all requests to '/test'
-        //request.setUrl('/test');
-  console.log(request.path, request.query);
-  return reply.continue();
-});
-
-
 
 server.views({
 //register the templates
@@ -106,32 +43,4 @@ isCached: false
 
 //var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
-//server.route(require("./routes"));
-
-server.route({
-  method: "GET", //use a method - GET, POST, PUT, DELETE
-  path: "/", //route path, i.e., {name?} name must be there or undefined
-  //path: "/{name?}",
-  handler: function(req, reply){ //function called when it gets request from outside, 2 argu
-    reply.view("index", {  //load index off the hardrive and use it
-      title: "Hello Bloggers" //
-    });
-
-  }
-});//end route to index
-
-var jsonObj = require("./posts.json"),
-jsonObj = jsonObj.posts;
-
-
-server.route({
-  method: "GET", //
-    path: "/public/{param*}",//matches the name in your html files
-    //path: "/{name}/{id}",
-    handler: {
-      directory: {
-        path: "build"
-        //reply(request.params.name + "|" + request.params.id);
-    }
-   }
- });
+server.route(require("./routes"));
