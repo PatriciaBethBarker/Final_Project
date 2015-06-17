@@ -13,15 +13,15 @@ module.exports = [{
   method: "GET",
   handler: require("./handlers/addPost")
 }, {
-  path: "posts/{slug}/edit",//edit post
+  path: "/posts/{slug}/edit",//edit post
   method: "GET",
   handler: require("./handlers/editPost")
 }, {
-  path: "posts/{slug}",//save post
+  path: "/posts/{slug}",//save post
   method: "POST",//post saved
   handler: require("./handlers/savePost")
 }, {//create single page view
-  path: "posts/{slug}",//return name of post
+  path: "/posts/{slug}",//return name of post
   method: "GET",
   handler: require("./handlers/viewPost")
 }, {
