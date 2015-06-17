@@ -1,6 +1,6 @@
 //getPost.js
 
-var Blog = require("../models/post");//get the post
+var Post = require("../models/post");//get the post
 
 module.exports = function(req, reply) {
   var id = req.params.id;
@@ -14,6 +14,7 @@ module.exports = function(req, reply) {
       post: model.JSON()
     });
   }//get model detail and then return the page
+
   model.set("id", id);
   model.load(function(err) {
     var data;
@@ -22,6 +23,7 @@ module.exports = function(req, reply) {
     } else {
       data = model.toJSON();
     }
+
     reply.view("post", {
       title: data.name,
       post: data
