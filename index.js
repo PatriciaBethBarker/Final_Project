@@ -1,13 +1,13 @@
 //index.js
 
 var hapi = require("hapi");
-var Routes = require("./routes");
+//var Routes = require("./routes");
 //move the db require below server connection
 var server = new hapi.Server( {
   //add connection settings, remove trailing slash in url
   connections: {
     router: {
-      isCaseSensitive: true,
+      //isCaseSensitive: true,
       stripTrailingSlash: false
     }
   }
@@ -104,6 +104,8 @@ isCached: false
 
 //var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
+server.route(require("./routes"));
+
 server.route({
   method: "GET", //use a method - GET, POST, PUT, DELETE
   path: "/", //route path, i.e., {name?} name must be there or undefined
@@ -112,19 +114,13 @@ server.route({
     reply.view("index", {  //load index off the hardrive and use it
       title: "Hello Bloggers" //
     });
-  //console.log(request.headers);
-  //console.log(request.params);
-    //reply("Hello, " + request.params.name + ", from me"); //pre-sanitized for us
 
-  //var name = request.params.name ||
-    //"Anonymous";   // typical way to handle defaults
-    //counter++; //adds a counter everytime you call the function -> +1
-    //reply("Hello, " + name + ", from me " + counter);//change the reply statement for request
   }
 });//end route to index
 
 var jsonObj = require("./posts.json"),
 jsonObj = jsonObj.posts;
+
 
 server.route({
   method: "GET", //
@@ -137,5 +133,3 @@ server.route({
     }
    }
  });
-
-server.route(require("./routes"));
