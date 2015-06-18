@@ -12,7 +12,6 @@ var server = new hapi.Server( {
   }
 });
 
-
 // Start the server
 server.connection({ port: 8000 });//listen using the connection function
 var db = require("./db");
@@ -21,9 +20,9 @@ var db = require("./db");
     if (err) {
       return console.error("db err", err);
     }
-    console.log("Database ready, start server.");
+    // console.log("Database ready, start server.");
     server.start(function() {
-    console.log("Server Ready");
+      console.log("Server Ready");
     });
 });
 
@@ -37,10 +36,11 @@ server.views({
   layout: "default",
   //add partials path here
     partialsPath: "views/templates/partials",
-isCached: false
+  isCached: false
+  // context: {
+  //   dev: true
+  //}
 });
 //register the routes, once matched, I want a response
-
-//var counter = 0;//this state lives outside the route/request, counter will stick around and the value will reset; see line 32, 33
 
 server.route(require("./routes"));
