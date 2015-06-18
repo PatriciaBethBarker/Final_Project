@@ -37,9 +37,6 @@ server.views({
   //add partials path here
     partialsPath: "views/templates/partials",
   isCached: false
-  // context: {
-  //   dev: true
-  //}
 });
 //register the routes, once matched, I want a response
 
