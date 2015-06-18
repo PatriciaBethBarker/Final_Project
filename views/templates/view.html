@@ -1,18 +1,20 @@
-<div class="containter">
+<p><a href="./editPost">Edit This Post</a></p>
 
-  <h1>Edit Posts</h1>
-    <p><a href="./edit">Click here to edit post</a></p>
+<div class="view">
 
-        <div class="center_div">
-          {{#edit post}}
 
-            <h2>Title: {{title}}</h2>
-              <ul>
-                <li>Category: {{category}}</li>
-                <li>Content: {{content}}</li>
-                <li>Author: {{author}}</li>
-                <li>Date: {{formatted}}</li>
-              </ul>
-          {{/edit post}}
-      </div>
+  <h1>View Post:  </h1>
+
+  <h2>{{title}}}</h2>
+    {{#with post}}
+          <ul>
+            <li>Category: {{category}}</li>
+            <li>Content: {{content}}</li>
+            <li>Author: {{author}}</li>
+            <li>Date: {{formatted}}</li>
+          </ul>
+    {{/with}}
+
+
+
 </div>
