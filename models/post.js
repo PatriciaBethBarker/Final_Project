@@ -31,10 +31,14 @@ module.exports = Backbone.Model.extend({
   save: function(done) { //save
     var self = this;
     var id = this.get("id");
+
+
+      //if statement
       if (id == "new") {
         var query = db.connection.prepare(q);
         var data = this.toJSON();
         var slug = this.get("title").toLowerCase();
+        console.log(data);
 
         query.run({
           $title: data.title,
