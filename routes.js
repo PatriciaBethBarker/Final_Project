@@ -37,7 +37,7 @@ module.exports = [{
   method: "GET",
   handler: {
     directory: {
-      path: "public"
+      path: "build"//changed from public
     }
   }
 }];
