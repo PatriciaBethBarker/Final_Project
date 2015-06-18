@@ -14,8 +14,8 @@ module.exports = function (req, reply) { //create hash varible
         //if, else statement
 
         if (expected && req.payload.password == expected.password) {
-
-          var response = reply.redirect("/");
+          //set cookies
+          var response = reply.redirect("/");//send home
           var id = req.payload.name + Date.now();
           hash.update(id);
           id = hash.digest("hex");
