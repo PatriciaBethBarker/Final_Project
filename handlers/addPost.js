@@ -2,7 +2,7 @@
 var db = require("../db");
 
 module.exports = function(req, reply) {
-  console.log(req.state);
+  // console.log(req.state);
   //if statement required here
   if (!req.state.user){
     return reply.redirect("/login");
@@ -11,7 +11,7 @@ module.exports = function(req, reply) {
   reply.view("post", {
       title: "Add Post",
       post: {
-          id: "new"
+          slug: "new"
       }
   });
 };
