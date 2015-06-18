@@ -12,7 +12,7 @@ module.exports = function(req, reply) {
       return reply.redirect("/login");
     }
 
-    post.load(function() {
+    post.load(function () {
         reply.view("post", {
             title: "Edit post",
             post: post.toJSON()
